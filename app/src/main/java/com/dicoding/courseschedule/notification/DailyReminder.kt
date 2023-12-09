@@ -53,7 +53,7 @@ class DailyReminder : BroadcastReceiver() {
             context,
             ID_REPEATING,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
 
         alarmManager?.setInexactRepeating(
@@ -82,7 +82,7 @@ class DailyReminder : BroadcastReceiver() {
             context,
             ID_REPEATING,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         alarmManager?.cancel(pendingIntent)
         pendingIntent?.cancel()
