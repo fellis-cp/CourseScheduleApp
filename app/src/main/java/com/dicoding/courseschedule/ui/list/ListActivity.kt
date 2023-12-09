@@ -96,8 +96,9 @@ class ListActivity : AppCompatActivity() {
             setOnMenuItemClickListener {
                 viewModel.sort(
                     when (it.itemId) {
-                        R.id.sort_time -> SortType.TIME
+
                         R.id.sort_course_name -> SortType.COURSE_NAME
+                        R.id.sort_time -> SortType.TIME
                         else -> SortType.LECTURER
                     }
                 )
@@ -114,7 +115,7 @@ class ListActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_sort -> {
+            R.id.action_sort -> { showSortMenu()
                 true
             }
             R.id.action_settings -> {
@@ -145,6 +146,7 @@ class ListActivity : AppCompatActivity() {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val course = (viewHolder as CourseViewHolder).getCourse()
+            viewModel.delete(course)
 
         }
     }
