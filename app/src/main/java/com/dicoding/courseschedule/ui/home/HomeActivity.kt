@@ -69,6 +69,11 @@ class HomeActivity : AppCompatActivity() {
             }
             viewModel.setQueryType(newQueryType)
             queryType = newQueryType
+
+            viewModel.getNearestSchedule().observe(this) { item ->
+                showNearestSchedule(item)
+            }
+
         }
     }
 
